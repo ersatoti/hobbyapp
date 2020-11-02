@@ -1,0 +1,43 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /hooby-api
+
+logging:
+  level:
+    org.springframework.data.r2dbc: Debug
+
+
+#spring:
+#  r2dbc:
+#    url: r2dbc:postgresql://localhost:5432/hobby
+#    username: postgres
+#    password: postgres
+#    initialization-mode: always
+
+spring:
+  profiles:
+    active: "dev"
+
+---
+
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: hobby
+      auto-index-creation : true
+
+---
+
+
+
+spring:
+  profiles: docker
+  data:
+    mongodb:
+      auto-index-creation: true
+
+#swagger: http://localhost:8080/swagger-ui/index.html
